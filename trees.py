@@ -109,6 +109,12 @@ class Node:
                 return False
         return self.validateBST(root.left) and self.validateBST(root.right)
         
+    """4.8 First Common Ancestor"""
+    def shortestpath(self, root):
+        # if on same side, go down
+        # if on opposite sides, must be at most common parent 
+
+
 
 """Heap"""
 myHeap = []
@@ -126,7 +132,6 @@ minimum2 = heapq.heappop(list)
 print(minimum2)
 print('\n')
 
-"""Depth"""
 print('depth: ')
 root = Node(10)
 root.insert(1)
@@ -135,7 +140,6 @@ d = root.maxDepth(root)
 print(d)
 print('\n')
 
-"""4.2 Minimal Tree"""
 print('4.2 minimal tree: ')
 minList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 r = Node(0)
@@ -145,6 +149,7 @@ d = r.maxDepth(r)
 print('depth: ', d)
 print('\n')
 
+print('4.3 list of depth: ')
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
@@ -152,15 +157,11 @@ root.left.left = Node(4)
 root.left.right = Node(5)
 root.right.left = Node(6)
 root.right.right = Node(7)
-
-"""4.3 List of Depth"""
-print('4.3 list of depth: ')
 root.PrintTree()
 print('\n')
 root.listofdepths(root)
 print('\n')
 
-"""4.4 Check Balanced"""
 print('4.4 check balanced:')
 root = Node(1)
 root.right = Node(2)
@@ -170,7 +171,6 @@ res = root.checkbalanced(root)
 print(res)
 print('\n')
 
-"""4.5 Validate BST"""
 print('4.5 validate BST:')
 root = Node(2)
 root.left = Node(1)
@@ -179,3 +179,17 @@ root.right.right = Node(4)
 root.right.left = Node(3)
 res = root.validateBST(root)
 print(res)
+print('\n')
+
+print('4.8 First Common Ancestor:')
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7)
+root.PrintTree()
+print('\n')
+root.shortestpath(root)
+print('\n')

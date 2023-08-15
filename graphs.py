@@ -71,7 +71,7 @@ class graph:
                     queue.append(n)
                     visited.add(n)
 
-    """4.? Route Between Nodes"""
+    """4.1 Route Between Nodes"""
     def routeBetweenNodes(self, node1, node2):
         queue = []
         visited = set()
@@ -83,15 +83,45 @@ class graph:
             print(curr)
             if curr == node2:
                 print('there is a route.')
-                exit()
+                break
             neighbors = self.getNeighbors(curr)
             for n in neighbors:
                 if n not in visited:
                     queue.append(n)
                     visited.add(n)
 
+    """4.7 Build Order"""
+    def connectedNodes(self, elements):
+        nodes = set()
+        for node in elements.keys():
+            nodes.add(node)
+        for nodeList in elements.values():
+            for node in nodeList:
+                nodes.add(node)
         
+        return nodes
+    
+    def buildorder(self, connected_nodes):
+        for node in connected_nodes:
+            queue = []
+            visited = set()
+            order = []
+            visited.add(node)
+            queue.append(node)
 
+            while queue:
+                cur = queue.pop(0)
+                order.append(cur)
+                neighbors = self.getNeighbors(cur)
+                for n in neighbors:
+                    if n not in visited:
+                        queue.append(n)
+                        visited.add(n)
+
+            if len(order) == len(connected_nodes):
+                return order
+            
+        return None
 
     
         
@@ -124,7 +154,23 @@ print('bfs:')
 g.bfs('a')
 print('\n')
 
-"""4.? Route Between Nodes"""
+"""4.1 Route Between Nodes"""
 print('route between nodes:')
 g.routeBetweenNodes('a', 'e')
+print('\n')
+
+"""4.7 Build Order"""
+print('build order:')
+graph_elements = { 
+    "a" : ["d"],
+    "b" : ["d"],
+    "d" : ["c"],
+    "f" : ["a", "b"]
+
+}
+g = graph(graph_elements)
+
+connected_nodes = g.connectedNodes(graph_elements)
+res = g.buildorder(connected_nodes)
+print(res)
 print('\n')
