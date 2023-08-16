@@ -1,3 +1,6 @@
+
+"""Chapter 4: Trees and Graphs"""
+
 class graph:
     def __init__(self,gdict=None):
         if gdict is None:
